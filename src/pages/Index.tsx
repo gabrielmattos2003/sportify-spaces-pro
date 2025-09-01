@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Phone, MapPin, Clock, Star } from "lucide-react";
+import logo from "@/assets/logotipo_nove10.png";
 
 const Index = () => {
   const courts = [
@@ -23,9 +24,11 @@ const Index = () => {
       <header className="bg-primary text-primary-foreground py-4 px-6">
         <div className="container mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-4">
-            <div className="w-12 h-12 bg-primary-foreground rounded-full flex items-center justify-center">
-              <span className="text-primary font-bold text-sm">N10</span>
-            </div>
+            <img 
+              src={logo} 
+              alt="Nove 10 Complexo Esportivo" 
+              className="w-12 h-12 object-contain"
+            />
             <h1 className="text-2xl font-bold">Nove 10 Complexo Esportivo</h1>
           </div>
           <nav className="hidden md:flex space-x-6">
