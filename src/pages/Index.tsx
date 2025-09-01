@@ -1,21 +1,25 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Phone, MapPin, Clock, Star } from "lucide-react";
-import logo from "@/assets/logotipo_nove10.png";
+
 
 const Index = () => {
-  const courts = [
+  const arenaCourts = [
     { name: "Quadra de Futebol", price: "R$ 80/hora", available: true },
-    { name: "Quadra de Vôlei", price: "R$ 60/hora", available: true },
-    { name: "Quadra de Basquete", price: "R$ 70/hora", available: false },
-    { name: "Quadra de Tênis", price: "R$ 90/hora", available: true },
+    { name: "Vôlei de Praia", price: "R$ 60/hora", available: true },
+    { name: "Beach Tênis", price: "R$ 70/hora", available: true },
+    { name: "Futvolei", price: "R$ 60/hora", available: true },
+  ];
+
+  const grassCourt = [
+    { name: "Quadra de Grama", price: "R$ 100/hora", available: true },
   ];
 
   const teachers = [
-    { name: "João Silva", sport: "Futebol", phone: "(11) 99999-1111", rating: 5 },
-    { name: "Maria Santos", sport: "Vôlei", phone: "(11) 99999-2222", rating: 5 },
-    { name: "Pedro Costa", sport: "Basquete", phone: "(11) 99999-3333", rating: 4 },
-    { name: "Ana Oliveira", sport: "Tênis", phone: "(11) 99999-4444", rating: 5 },
+    { name: "João Silva", sport: "Geral", phone: "(11) 99999-1111" },
+    { name: "Maria Santos", sport: "Beach Tênis", phone: "(11) 99999-2222" },
+    { name: "Pedro Costa", sport: "Geral", phone: "(11) 99999-3333" },
+    { name: "Ana Oliveira", sport: "Beach Tênis", phone: "(11) 99999-4444" },
   ];
 
   return (
@@ -24,16 +28,17 @@ const Index = () => {
       <header className="bg-primary text-primary-foreground py-4 px-6">
         <div className="container mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-4">
-            <img 
-              src={logo} 
-              alt="Nove 10 Complexo Esportivo" 
-              className="w-12 h-12 object-contain"
-            />
+            <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center">
+              <span className="text-secondary-foreground font-bold text-sm">N10</span>
+            </div>
             <h1 className="text-2xl font-bold">Nove 10 Complexo Esportivo</h1>
           </div>
           <nav className="hidden md:flex space-x-6">
-            <a href="#quadras" className="hover:text-primary-foreground/80">Quadras</a>
-            <a href="#aulas" className="hover:text-primary-foreground/80">Aulas</a>
+            <a href="#quadras" className="hover:text-primary-foreground/80">Aluguel de Quadra</a>
+            <a href="#aulas" className="hover:text-primary-foreground/80">Marcar Aula</a>
+            <a href="#salao" className="hover:text-primary-foreground/80">Aluguel do Salão</a>
+            <a href="#eventos" className="hover:text-primary-foreground/80">Marcar Eventos</a>
+            <a href="#rotativo" className="hover:text-primary-foreground/80">Rotativo</a>
             <a href="#galeria" className="hover:text-primary-foreground/80">Galeria</a>
             <a href="#contato" className="hover:text-primary-foreground/80">Contato</a>
           </nav>
@@ -41,16 +46,16 @@ const Index = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground py-20 px-6">
+      <section className="bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground py-20 px-6">
         <div className="container mx-auto text-center">
           <h2 className="text-5xl font-bold mb-6">Seu Esporte, Nossa Paixão</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             O melhor complexo esportivo da região com quadras modernas, professores qualificados e estrutura completa para sua diversão e treino.
           </p>
-          <Button size="lg" variant="secondary" className="mr-4">
+          <Button size="lg" variant="default" className="mr-4">
             Alugar Quadra
           </Button>
-          <Button size="lg" variant="outline" className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+          <Button size="lg" variant="outline" className="bg-transparent border-secondary-foreground text-secondary-foreground hover:bg-secondary-foreground hover:text-secondary">
             Marcar Aula
           </Button>
         </div>
@@ -60,14 +65,17 @@ const Index = () => {
       <section id="quadras" className="py-16 px-6">
         <div className="container mx-auto">
           <h3 className="text-3xl font-bold text-center mb-12">Aluguel de Quadras</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {courts.map((court, index) => (
+          
+          {/* Quadras de Areia */}
+          <h4 className="text-2xl font-bold text-center mb-8 text-secondary">Quadras de Areia</h4>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {arenaCourts.map((court, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <CardTitle className="text-lg">{court.name}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-2xl font-bold text-primary mb-4">{court.price}</p>
+                  <p className="text-2xl font-bold text-secondary mb-4">{court.price}</p>
                   <div className="flex items-center mb-4">
                     <Clock className="w-4 h-4 mr-2 text-muted-foreground" />
                     <span className="text-sm text-muted-foreground">Disponível 6h-22h</span>
@@ -83,26 +91,49 @@ const Index = () => {
               </Card>
             ))}
           </div>
+
+          {/* Quadra de Grama */}
+          <h4 className="text-2xl font-bold text-center mb-8 text-secondary">Quadra de Grama</h4>
+          <div className="grid md:grid-cols-1 lg:grid-cols-1 gap-6 justify-center">
+            <div className="max-w-sm mx-auto">
+              {grassCourt.map((court, index) => (
+                <Card key={index} className="hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <CardTitle className="text-lg">{court.name}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-2xl font-bold text-secondary mb-4">{court.price}</p>
+                    <div className="flex items-center mb-4">
+                      <Clock className="w-4 h-4 mr-2 text-muted-foreground" />
+                      <span className="text-sm text-muted-foreground">Disponível 6h-22h</span>
+                    </div>
+                    <Button 
+                      className="w-full" 
+                      disabled={!court.available}
+                      variant={court.available ? "default" : "secondary"}
+                    >
+                      {court.available ? "Reservar" : "Indisponível"}
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Aulas */}
       <section id="aulas" className="py-16 px-6 bg-muted">
         <div className="container mx-auto">
-          <h3 className="text-3xl font-bold text-center mb-12">Aulas Particulares</h3>
+          <h3 className="text-3xl font-bold text-center mb-12">Aulas</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {teachers.map((teacher, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <CardTitle className="text-lg">{teacher.name}</CardTitle>
-                  <p className="text-primary font-semibold">{teacher.sport}</p>
+                  <p className="text-secondary font-semibold">{teacher.sport}</p>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex items-center mb-3">
-                    {Array.from({ length: teacher.rating }).map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-primary text-primary" />
-                    ))}
-                  </div>
                   <div className="flex items-center mb-4">
                     <Phone className="w-4 h-4 mr-2 text-muted-foreground" />
                     <span className="text-sm">{teacher.phone}</span>
@@ -114,6 +145,99 @@ const Index = () => {
               </Card>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Aluguel do Salão */}
+      <section id="salao" className="py-16 px-6">
+        <div className="container mx-auto text-center">
+          <h3 className="text-3xl font-bold mb-8">Aluguel do Salão</h3>
+          <p className="text-lg mb-8 max-w-2xl mx-auto">
+            Espaço amplo e climatizado, ideal para festas, eventos corporativos e comemorações.
+          </p>
+          <Card className="max-w-md mx-auto">
+            <CardHeader>
+              <CardTitle>Salão de Eventos</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-2xl font-bold text-secondary mb-4">R$ 200/hora</p>
+              <p className="text-sm text-muted-foreground mb-4">Capacidade: 100 pessoas</p>
+              <Button className="w-full">
+                Reservar Salão
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Marcar Eventos */}
+      <section id="eventos" className="py-16 px-6 bg-muted">
+        <div className="container mx-auto text-center">
+          <h3 className="text-3xl font-bold mb-8">Marcar Eventos</h3>
+          <p className="text-lg mb-8 max-w-2xl mx-auto">
+            Organizamos torneios, campeonatos e eventos esportivos personalizados.
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Torneios</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm mb-4">Organizamos torneios de futebol, vôlei e beach tênis.</p>
+                <Button className="w-full">Solicitar Orçamento</Button>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle>Eventos Corporativos</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm mb-4">Team building e confraternizações empresariais.</p>
+                <Button className="w-full">Solicitar Orçamento</Button>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle>Festas Esportivas</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm mb-4">Aniversários e comemorações com tema esportivo.</p>
+                <Button className="w-full">Solicitar Orçamento</Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Rotativo */}
+      <section id="rotativo" className="py-16 px-6">
+        <div className="container mx-auto">
+          <h3 className="text-3xl font-bold text-center mb-8">Rotativo do Dia</h3>
+          <p className="text-lg text-center mb-8 max-w-2xl mx-auto">
+            Cadastre-se no rotativo e encontre outros jogadores para formar equipes!
+          </p>
+          <Card className="max-w-md mx-auto">
+            <CardHeader>
+              <CardTitle>Participar do Rotativo</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground mb-4">
+                Informe seu nome e modalidade de interesse
+              </p>
+              <Button className="w-full mb-2">
+                Futebol
+              </Button>
+              <Button className="w-full mb-2" variant="outline">
+                Vôlei de Praia
+              </Button>
+              <Button className="w-full mb-2" variant="outline">
+                Beach Tênis
+              </Button>
+              <Button className="w-full" variant="outline">
+                Futvolei
+              </Button>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
