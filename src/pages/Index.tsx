@@ -24,9 +24,9 @@ const Index = () => {
         <div className="container mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <div className="w-12 h-12 bg-primary-foreground rounded-full flex items-center justify-center">
-              <span className="text-primary font-bold text-xl">CE</span>
+              <span className="text-primary font-bold text-sm">N10</span>
             </div>
-            <h1 className="text-2xl font-bold">Complexo Esportivo</h1>
+            <h1 className="text-2xl font-bold">Nove 10 Complexo Esportivo</h1>
           </div>
           <nav className="hidden md:flex space-x-6">
             <a href="#quadras" className="hover:text-primary-foreground/80">Quadras</a>
@@ -136,7 +136,7 @@ const Index = () => {
         <div className="container mx-auto">
           <div className="grid md:grid-cols-3 gap-8">
             <div>
-              <h4 className="text-xl font-bold mb-4">Complexo Esportivo</h4>
+              <h4 className="text-xl font-bold mb-4">Nove 10 Complexo Esportivo</h4>
               <p className="mb-4">O melhor local para praticar esportes com qualidade e segurança.</p>
               <div className="flex items-center">
                 <MapPin className="w-4 h-4 mr-2" />
@@ -156,7 +156,7 @@ const Index = () => {
             </div>
           </div>
           <div className="border-t border-secondary-foreground/20 mt-8 pt-8 text-center">
-            <p className="text-sm">&copy; 2024 Complexo Esportivo. Todos os direitos reservados.</p>
+            <p className="text-sm">&copy; 2024 Nove 10 Complexo Esportivo. Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>
