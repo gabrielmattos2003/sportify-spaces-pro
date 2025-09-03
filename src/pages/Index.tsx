@@ -5,14 +5,11 @@ import { Phone, MapPin, Clock, Star } from "lucide-react";
 
 const Index = () => {
   const arenaCourts = [
-    { name: "Quadra de Futebol", price: "R$ 80/hora", available: true },
-    { name: "Vôlei de Praia", price: "R$ 60/hora", available: true },
-    { name: "Beach Tênis", price: "R$ 70/hora", available: true },
-    { name: "Futvolei", price: "R$ 60/hora", available: true },
-  ];
-
-  const grassCourt = [
-    { name: "Quadra de Grama", price: "R$ 100/hora", available: true },
+    { name: "Quadra 1", price: "R$ 80/hora", available: true },
+    { name: "Quadra 2", price: "R$ 60/hora", available: true },
+    { name: "Quadra 3", price: "R$ 70/hora", available: true },
+    { name: "Quadra 4", price: "R$ 60/hora", available: true },
+    { name: "Campo de Futebol", price: "R$ 100/hora", available: true },
   ];
 
   const teachers = [
@@ -57,23 +54,15 @@ const Index = () => {
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             O melhor complexo esportivo da região com quadras modernas, professores qualificados e estrutura completa para sua diversão e treino.
           </p>
-          <Button size="lg" variant="default" className="mr-4">
-            Alugar Quadra
-          </Button>
-          <Button size="lg" variant="outline" className="bg-transparent border-secondary-foreground text-secondary-foreground hover:bg-secondary-foreground hover:text-secondary">
-            Marcar Aula
-          </Button>
         </div>
       </section>
 
-      {/* Aluguel de Quadras */}
+      {/* Reserva de Quadras */}
       <section id="quadras" className="py-16 px-6">
         <div className="container mx-auto">
-          <h3 className="text-3xl font-bold text-center mb-12">Aluguel de Quadras</h3>
+          <h3 className="text-3xl font-bold text-center mb-12">Reserva de Quadras</h3>
           
-          {/* Quadras de Areia */}
-          <h4 className="text-2xl font-bold text-center mb-8 text-secondary">Quadras de Areia</h4>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
             {arenaCourts.map((court, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow">
                 <CardHeader>
@@ -95,34 +84,6 @@ const Index = () => {
                 </CardContent>
               </Card>
             ))}
-          </div>
-
-          {/* Quadra de Grama */}
-          <h4 className="text-2xl font-bold text-center mb-8 text-secondary">Quadra de Grama</h4>
-          <div className="grid md:grid-cols-1 lg:grid-cols-1 gap-6 justify-center">
-            <div className="max-w-sm mx-auto">
-              {grassCourt.map((court, index) => (
-                <Card key={index} className="hover:shadow-lg transition-shadow">
-                  <CardHeader>
-                    <CardTitle className="text-lg">{court.name}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-2xl font-bold text-secondary mb-4">{court.price}</p>
-                    <div className="flex items-center mb-4">
-                      <Clock className="w-4 h-4 mr-2 text-muted-foreground" />
-                      <span className="text-sm text-muted-foreground">Disponível 6h-22h</span>
-                    </div>
-                    <Button 
-                      className="w-full" 
-                      disabled={!court.available}
-                      variant={court.available ? "default" : "secondary"}
-                    >
-                      {court.available ? "Reservar" : "Indisponível"}
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
           </div>
         </div>
       </section>
