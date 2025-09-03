@@ -38,11 +38,11 @@ const Index = () => {
           {/* Navigation - Below Logo */}
           <nav className="flex justify-center">
             <div className="flex flex-wrap justify-center gap-6 text-sm">
-              <a href="#quadras" className="hover:text-primary-foreground/80 transition-colors">Aluguel de Quadra</a>
+              <a href="#quadras" className="hover:text-primary-foreground/80 transition-colors">Reserva de Quadra ou Campo</a>
               <a href="#aulas" className="hover:text-primary-foreground/80 transition-colors">Marcar Aula</a>
-              <a href="#salao" className="hover:text-primary-foreground/80 transition-colors">Aluguel do Salão</a>
-              <a href="#eventos" className="hover:text-primary-foreground/80 transition-colors">Marcar Eventos</a>
-              <a href="#rotativo" className="hover:text-primary-foreground/80 transition-colors">Rotativo</a>
+              <a href="#salao" className="hover:text-primary-foreground/80 transition-colors">Reserva para Eventos</a>
+              <a href="#eventos" className="hover:text-primary-foreground/80 transition-colors">Escola do Flamengo</a>
+              <a href="#rotativo" className="hover:text-primary-foreground/80 transition-colors">Rotativo Volei</a>
               <a href="#galeria" className="hover:text-primary-foreground/80 transition-colors">Galeria</a>
               <a href="#contato" className="hover:text-primary-foreground/80 transition-colors">Contato</a>
             </div>
