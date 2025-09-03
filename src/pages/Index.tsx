@@ -16,10 +16,12 @@ const Index = () => {
   ];
 
   const teachers = [
-    { name: "João Silva", sport: "Geral", phone: "(11) 99999-1111" },
-    { name: "Maria Santos", sport: "Beach Tênis", phone: "(11) 99999-2222" },
-    { name: "Pedro Costa", sport: "Geral", phone: "(11) 99999-3333" },
-    { name: "Ana Oliveira", sport: "Beach Tênis", phone: "(11) 99999-4444" },
+    { name: "Prof. Antonio", sport: "Beach Tennis", phone: "(21) 99791-0234" },
+    { name: "Prof. Lucas", sport: "Beach Tennis", phone: "(48) 98469-3289" },
+    { name: "Prof. Heitor", sport: "Futevolei", phone: "(48) 98426-3684" },
+    { name: "Prof. Fernando", sport: "Futevolei", phone: "(48) 99915-8789" },
+    { name: "Prof. Gerzem", sport: "Volei", phone: "(48) 99106-5759" },
+    { name: "Prof. Ceará", sport: "Volei", phone: "(48) 99995-4995" },
   ];
 
   return (
