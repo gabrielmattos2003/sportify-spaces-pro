@@ -25,22 +25,25 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="bg-primary text-primary-foreground py-4 px-6">
-        <div className="container mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center">
-              <span className="text-secondary-foreground font-bold text-sm">N10</span>
-            </div>
-            <h1 className="text-2xl font-bold">Nove 10 Complexo Esportivo</h1>
+      <header className="bg-primary text-primary-foreground py-6 px-6">
+        <div className="container mx-auto">
+          {/* Logo and Name - Centered */}
+          <div className="flex items-center justify-center space-x-4 mb-4">
+            <img src="/src/assets/logotipo_nove10.png" alt="Nove 10 Logo" className="w-16 h-16" />
+            <h1 className="text-3xl font-bold">Nove 10 Complexo Esportivo</h1>
           </div>
-          <nav className="hidden md:flex space-x-6">
-            <a href="#quadras" className="hover:text-primary-foreground/80">Aluguel de Quadra</a>
-            <a href="#aulas" className="hover:text-primary-foreground/80">Marcar Aula</a>
-            <a href="#salao" className="hover:text-primary-foreground/80">Aluguel do Salão</a>
-            <a href="#eventos" className="hover:text-primary-foreground/80">Marcar Eventos</a>
-            <a href="#rotativo" className="hover:text-primary-foreground/80">Rotativo</a>
-            <a href="#galeria" className="hover:text-primary-foreground/80">Galeria</a>
-            <a href="#contato" className="hover:text-primary-foreground/80">Contato</a>
+          
+          {/* Navigation - Below Logo */}
+          <nav className="flex justify-center">
+            <div className="flex flex-wrap justify-center gap-6 text-sm">
+              <a href="#quadras" className="hover:text-primary-foreground/80 transition-colors">Aluguel de Quadra</a>
+              <a href="#aulas" className="hover:text-primary-foreground/80 transition-colors">Marcar Aula</a>
+              <a href="#salao" className="hover:text-primary-foreground/80 transition-colors">Aluguel do Salão</a>
+              <a href="#eventos" className="hover:text-primary-foreground/80 transition-colors">Marcar Eventos</a>
+              <a href="#rotativo" className="hover:text-primary-foreground/80 transition-colors">Rotativo</a>
+              <a href="#galeria" className="hover:text-primary-foreground/80 transition-colors">Galeria</a>
+              <a href="#contato" className="hover:text-primary-foreground/80 transition-colors">Contato</a>
+            </div>
           </nav>
         </div>
       </header>
