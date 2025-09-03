@@ -136,42 +136,27 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Marcar Eventos */}
+      {/* Escola do Flamengo */}
       <section id="eventos" className="py-16 px-6 bg-muted">
         <div className="container mx-auto text-center">
-          <h3 className="text-3xl font-bold mb-8">Marcar Eventos</h3>
+          <h3 className="text-3xl font-bold mb-8">Escola do Flamengo</h3>
           <p className="text-lg mb-8 max-w-2xl mx-auto">
-            Organizamos torneios, campeonatos e eventos esportivos personalizados.
+            Bem-vindo à sua Escola de Futebol Flamengo em Florianópolis — aqui começa o seu sonho dentro das quatro linhas!
           </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Torneios</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm mb-4">Organizamos torneios de futebol, vôlei e beach tênis.</p>
-                <Button className="w-full">Solicitar Orçamento</Button>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>Eventos Corporativos</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm mb-4">Team building e confraternizações empresariais.</p>
-                <Button className="w-full">Solicitar Orçamento</Button>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>Festas Esportivas</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm mb-4">Aniversários e comemorações com tema esportivo.</p>
-                <Button className="w-full">Solicitar Orçamento</Button>
-              </CardContent>
-            </Card>
-          </div>
+          <Card className="max-w-md mx-auto">
+            <CardHeader>
+              <CardTitle>Escola Flamengo Florianópolis</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex items-center justify-center mb-4">
+                <Phone className="w-4 h-4 mr-2 text-muted-foreground" />
+                <span className="text-lg">(48) 98806-0411</span>
+              </div>
+              <Button className="w-full">
+                Entrar em Contato
+              </Button>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
