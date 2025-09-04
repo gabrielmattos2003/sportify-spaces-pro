@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Phone, MapPin, Clock, Star, MessageCircle } from "lucide-react";
+import { Phone, MapPin, Clock, Star } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 
 const Index = () => {
@@ -50,10 +51,9 @@ const Index = () => {
             href="https://wa.me/554832090284"
             target="_blank"
             rel="noopener noreferrer"
-            className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all hover:scale-110 z-50"
-            aria-label="Entre em contato pelo WhatsApp"
+            className="fixed bottom-4 right-4 bg-green-500 p-4 rounded-full shadow-lg text-white hover:bg-green-600 transition z-50"
           >
-            <MessageCircle size={24} />
+            <FaWhatsapp size={28} />
           </a>
         </div>
       </header>
