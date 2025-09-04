@@ -189,32 +189,50 @@ const Index = () => {
       {/* Rotativo */}
       <section id="rotativo" className="py-16 px-6">
         <div className="container mx-auto">
-          <h3 className="text-3xl font-bold text-center mb-8">Rotativo do Dia</h3>
-          <p className="text-lg text-center mb-8 max-w-2xl mx-auto">
-            Cadastre-se no rotativo e encontre outros jogadores para formar equipes!
-          </p>
-          <Card className="max-w-md mx-auto">
-            <CardHeader>
-              <CardTitle>Participar do Rotativo</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground mb-4">
-                Informe seu nome e modalidade de interesse
+          <h3 className="text-3xl font-bold text-center mb-8">Rotativo</h3>
+          <div className="max-w-3xl mx-auto">
+            <div className="mb-8">
+              <h4 className="text-xl font-semibold mb-4 text-center">Como funciona?</h4>
+              <p className="text-lg text-center mb-8">
+                É rotativo de vôlei de duplas! As pessoas se dividem nas quadras e jogam partidas curtas. Ao longo do tempo, as duplas vão se revezando para garantir que todos joguem.
               </p>
-              <Button className="w-full mb-2">
-                Futebol
-              </Button>
-              <Button className="w-full mb-2" variant="outline">
-                Vôlei de Praia
-              </Button>
-              <Button className="w-full mb-2" variant="outline">
-                Beach Tênis
-              </Button>
-              <Button className="w-full" variant="outline">
-                Futvolei
-              </Button>
-            </CardContent>
-          </Card>
+            </div>
+            
+            <div className="mb-8">
+              <h4 className="text-xl font-semibold mb-4 text-center">Horários do Rotativo:</h4>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">Quarta-feira: 21h às 00h</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm mb-2">• 1 quadra das 21h às 22h</p>
+                    <p className="text-sm">• +2 quadras das 22h às 00h</p>
+                  </CardContent>
+                </Card>
+                
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">Sexta-feira: 16h às 21h</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm">• 3 quadras disponíveis</p>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+            
+            <Card className="max-w-md mx-auto">
+              <CardHeader>
+                <CardTitle>Participar do Rotativo</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <Button className="w-full">
+                  Vôlei
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 
