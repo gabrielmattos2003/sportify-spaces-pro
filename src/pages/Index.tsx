@@ -22,6 +22,14 @@ const Index = () => {
     { name: "Prof. Ceará", sport: "Volei", phone: "(48) 99995-4995" },
   ];
 
+  // Function to convert phone number to WhatsApp format
+  const formatPhoneForWhatsApp = (phone: string) => {
+    // Remove all non-numeric characters
+    const cleanPhone = phone.replace(/\D/g, '');
+    // Add country code 55 for Brazil if not present
+    return `55${cleanPhone}`;
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -115,9 +123,16 @@ const Index = () => {
                     <Phone className="w-4 h-4 mr-2 text-muted-foreground" />
                     <span className="text-sm">{teacher.phone}</span>
                   </div>
-                  <Button className="w-full">
-                    Marcar Aula
-                  </Button>
+                  <a
+                    href={`https://wa.me/${formatPhoneForWhatsApp(teacher.phone)}?text=Olá ${teacher.name}, gostaria de marcar uma aula de ${teacher.sport}.`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full"
+                  >
+                    <Button className="w-full">
+                      Marcar Aula
+                    </Button>
+                  </a>
                 </CardContent>
               </Card>
             ))}
