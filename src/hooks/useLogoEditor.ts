@@ -1,11 +1,11 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
-interface LogoEditorProps {
+interface UseLogoEditorProps {
   originalImageUrl: string;
   onProcessed: (processedImageUrl: string) => void;
 }
 
-export const LogoEditor = ({ originalImageUrl, onProcessed }: LogoEditorProps) => {
+export const useLogoEditor = ({ originalImageUrl, onProcessed }: UseLogoEditorProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -64,5 +64,5 @@ export const LogoEditor = ({ originalImageUrl, onProcessed }: LogoEditorProps) =
     processLogo();
   }, [originalImageUrl, onProcessed]);
 
-  return <canvas ref={canvasRef} style={{ display: 'none' }} />;
+  return { canvasRef };
 };

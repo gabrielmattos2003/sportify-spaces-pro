@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
-import { removeBackground, loadImage } from '@/utils/backgroundRemoval';
+import { useState, useEffect } from 'react';
+import { removeBackground, loadImage } from '@/utils/imageProcessing';
 
-interface LogoProcessorProps {
+interface UseLogoProcessorProps {
   originalImageUrl: string;
   onProcessed: (processedImageUrl: string) => void;
 }
 
-export const LogoProcessor = ({ originalImageUrl, onProcessed }: LogoProcessorProps) => {
+export const useLogoProcessor = ({ originalImageUrl, onProcessed }: UseLogoProcessorProps) => {
   const [isProcessing, setIsProcessing] = useState(false);
 
   useEffect(() => {
@@ -40,5 +40,5 @@ export const LogoProcessor = ({ originalImageUrl, onProcessed }: LogoProcessorPr
     processLogo();
   }, [originalImageUrl, onProcessed]);
 
-  return null;
+  return { isProcessing };
 };

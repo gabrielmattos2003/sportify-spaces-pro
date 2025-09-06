@@ -2,42 +2,18 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Phone, MapPin, Clock, Star } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
+import { usePhoneFormatter } from "@/hooks/usePhoneFormatter";
+import { arenaCourts, teachers } from "@/utils/sportsData";
 
-
-const Index = () => {
-  
-  const arenaCourts = [
-    { name: "Quadra 1", price: "R$ 80/hora", available: true },
-    { name: "Quadra 2", price: "R$ 60/hora", available: true },
-    { name: "Quadra 3", price: "R$ 70/hora", available: true },
-    { name: "Quadra 4", price: "R$ 60/hora", available: true },
-    { name: "Campo de Futebol", price: "R$ 100/hora", available: true },
-  ];
-
-  const teachers = [
-    { name: "Prof. Antonio", sport: "Beach Tennis", phone: "(21) 99791-0234" },
-    { name: "Prof. Lucas", sport: "Beach Tennis", phone: "(48) 98469-3289" },
-    { name: "Prof. Heitor", sport: "Futevolei", phone: "(48) 98426-3684" },
-    { name: "Prof. Fernando", sport: "Futevolei", phone: "(48) 99915-8789" },
-    { name: "Prof. Gerzem", sport: "Volei", phone: "(48) 99106-5759" },
-    { name: "Prof. Ceará", sport: "Volei", phone: "(48) 99995-4995" },
-  ];
-
-  // Function to convert phone number to WhatsApp format
-  const formatPhoneForWhatsApp = (phone: string) => {
-    // Remove all non-numeric characters
-    const cleanPhone = phone.replace(/\D/g, '');
-    // Add country code 55 for Brazil if not present
-    return `55${cleanPhone}`;
-  };
+const Home = () => {
+  const { formatPhoneForWhatsApp } = usePhoneFormatter();
 
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="text-white py-6 px-6">
         <div className="container mx-auto">
-          
-          {/* Title - Below Logo with custom colors */}
+          {/* Title */}
           <div className="text-center mb-6">
             <h1 className="text-3xl font-bold">
               <span className="text-gray-400">NOVE</span>
@@ -46,7 +22,7 @@ const Index = () => {
             <p className="text-orange-500 text-lg font-semibold tracking-wide">COMPLEXO ESPORTIVO</p>
           </div>
           
-          {/* Navigation - Below Title */}
+          {/* Navigation */}
           <nav className="flex justify-center">
             <div className="flex flex-wrap justify-center gap-6 text-sm">
               <a href="#quadras" className="hover:text-primary-foreground/80 transition-colors">Reserva de Quadra ou Campo</a>
@@ -291,4 +267,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Home;
