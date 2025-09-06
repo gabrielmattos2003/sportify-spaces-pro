@@ -35,12 +35,12 @@ const Home = () => {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-6">
-              <a href="#quadras" className="text-sm hover:text-primary transition-colors">Quadras</a>
-              <a href="#aulas" className="text-sm hover:text-primary transition-colors">Aulas</a>
-              <a href="#salao" className="text-sm hover:text-primary transition-colors">Eventos</a>
-              <a href="#eventos" className="text-sm hover:text-primary transition-colors">Flamengo</a>
-              <a href="#rotativo" className="text-sm hover:text-primary transition-colors">Rotativo</a>
-              <a href="#galeria" className="text-sm hover:text-primary transition-colors">Galeria</a>
+              <a href="#quadras" className="text-sm hover:text-secondary transition-colors">Quadras</a>
+              <a href="#aulas" className="text-sm hover:text-secondary transition-colors">Aulas</a>
+              <a href="#salao" className="text-sm hover:text-secondary transition-colors">Eventos</a>
+              <a href="#eventos" className="text-sm hover:text-secondary transition-colors">Flamengo</a>
+              <a href="#rotativo" className="text-sm hover:text-secondary transition-colors">Rotativo</a>
+              <a href="#galeria" className="text-sm hover:text-secondary transition-colors">Galeria</a>
             </nav>
 
             {/* Right side actions */}
@@ -66,6 +66,7 @@ const Home = () => {
                 <Button 
                   size="sm" 
                   onClick={() => setAuthDialogOpen(true)}
+                  className="bg-secondary hover:bg-secondary/90 text-secondary-foreground"
                 >
                   <LogIn className="h-4 w-4 mr-1" />
                   Entrar
@@ -127,7 +128,7 @@ const Home = () => {
                     <span className="text-sm text-muted-foreground">Disponível 6h-22h</span>
                   </div>
                   <Button 
-                    className="w-full" 
+                    className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground" 
                     disabled={!court.available}
                     variant={court.available ? "default" : "secondary"}
                   >
@@ -162,7 +163,7 @@ const Home = () => {
                     rel="noopener noreferrer"
                     className="w-full"
                   >
-                    <Button className="w-full">
+                    <Button className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground">
                       Marcar Aula
                     </Button>
                   </a>
@@ -187,7 +188,7 @@ const Home = () => {
             <CardContent>
               <p className="text-2xl font-bold text-secondary mb-4">R$ 200/hora</p>
               <p className="text-sm text-muted-foreground mb-4">Capacidade: 100 pessoas</p>
-              <Button className="w-full">
+              <Button className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground">
                 Reservar Salão
               </Button>
             </CardContent>
@@ -211,7 +212,7 @@ const Home = () => {
                 <Phone className="w-4 h-4 mr-2 text-muted-foreground" />
                 <span className="text-lg">(48) 98806-0411</span>
               </div>
-              <Button className="w-full">
+              <Button className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground">
                 Entrar em Contato
               </Button>
             </CardContent>
@@ -260,7 +261,7 @@ const Home = () => {
                 <CardTitle>Participar do Rotativo</CardTitle>
               </CardHeader>
               <CardContent>
-                <Button className="w-full">
+                <Button className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground">
                   Vôlei
                 </Button>
               </CardContent>
