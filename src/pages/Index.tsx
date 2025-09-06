@@ -38,7 +38,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       {/* Logo Processor */}
       <LogoProcessor 
-        originalImageUrl="/lovable-uploads/e62a9946-4f45-474b-ac34-45b4de10bde5.png"
+        originalImageUrl="/lovable-uploads/4372b3d9-b6a3-4944-a18d-881e922fbde2.png"
         onProcessed={setProcessedLogoUrl}
       />
       
@@ -48,7 +48,7 @@ const Index = () => {
           {/* Logo - Centered at top */}
           <div className="flex justify-center mb-4">
             <img 
-              src={processedLogoUrl || "/lovable-uploads/e62a9946-4f45-474b-ac34-45b4de10bde5.png"} 
+              src={processedLogoUrl || "/lovable-uploads/4372b3d9-b6a3-4944-a18d-881e922fbde2.png"} 
               alt="Nove 10 Logo" 
               className="w-24 h-24 object-contain" 
             />
