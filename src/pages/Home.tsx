@@ -41,16 +41,6 @@ const Home = () => {
             {/* Right side actions */}
             <div className="flex items-center space-x-2">
               <ThemeToggle />
-              
-              <Button 
-                size="sm" 
-                onClick={() => window.location.href = "/dashboard"}
-                className="bg-secondary hover:bg-secondary/90 text-secondary-foreground"
-              >
-                <User className="h-4 w-4 mr-1" />
-                Dashboard
-              </Button>
-              
               <MobileMenu />
             </div>
           </div>
