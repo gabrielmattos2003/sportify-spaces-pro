@@ -35,13 +35,17 @@ const Index = () => {
       {/* Header */}
       <header className="bg-primary text-primary-foreground py-6 px-6">
         <div className="container mx-auto">
-          {/* Logo and Name - Centered */}
-          <div className="flex items-center justify-center space-x-4 mb-4">
-            <img src="/src/assets/logotipo_nove10.png" alt="Nove 10 Logo" className="w-16 h-16" />
+          {/* Logo - Centered at top */}
+          <div className="flex justify-center mb-4">
+            <img src="/lovable-uploads/bb76944f-d711-451f-86db-52de16cbd8c5.png" alt="Nove 10 Logo" className="w-24 h-24" />
+          </div>
+          
+          {/* Title - Below Logo */}
+          <div className="text-center mb-6">
             <h1 className="text-3xl font-bold">Nove 10 Complexo Esportivo</h1>
           </div>
           
-          {/* Navigation - Below Logo */}
+          {/* Navigation - Below Title */}
           <nav className="flex justify-center">
             <div className="flex flex-wrap justify-center gap-6 text-sm">
               <a href="#quadras" className="hover:text-primary-foreground/80 transition-colors">Reserva de Quadra ou Campo</a>
