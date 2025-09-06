@@ -25,7 +25,7 @@ export function MobileMenu() {
             <span className="sr-only">Abrir menu</span>
           </Button>
         </SheetTrigger>
-        <SheetContent side="right" className="w-[250px] sm:w-[300px] bg-black text-white">
+        <SheetContent side="right" className="w-[250px] sm:w-[300px] bg-black text-white [&>button]:border-secondary [&>button]:text-secondary [&>button:hover]:bg-secondary/10">
           <nav className="flex flex-col gap-4">
             {navigation.map((item) => (
               <a
