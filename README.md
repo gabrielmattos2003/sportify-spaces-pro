@@ -59,6 +59,55 @@ This project is built with:
 - React
 - shadcn-ui
 - Tailwind CSS
+- Supabase (Auth, Database, Storage)
+
+## Backend (Supabase) Setup
+
+This project uses Supabase for authentication (email/password), database, and storage. No separate server is required.
+
+1) Create a Storage bucket
+- In Supabase > Storage, create a public bucket named `logos`.
+
+2) Database table and RLS policies
+- In Supabase > SQL, run:
+```
+create extension if not exists pgcrypto;
+create table if not exists public.logos (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid not null references auth.users(id) on delete cascade,
+  path text not null,
+  created_at timestamp with time zone default now()
+);
+alter table public.logos enable row level security;
+create policy "Users can manage their own logos" on public.logos
+  for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
+```
+
+3) Configure Supabase client keys
+- Open `src/lib/supabaseClient.ts` and replace `YOUR_SUPABASE_URL` and `YOUR_SUPABASE_ANON_KEY` with your project values.
+- Note: Lovable does not use .env for frontend. Public anon key is safe in the browser.
+
+4) Available services/hooks
+- Auth: `src/services/authService.ts`, `src/hooks/useAuth.ts`
+- Storage: `src/services/storageService.ts`
+- Logos DB: `src/services/logoService.ts`
+- React Query cache + lazy requests: `src/hooks/useLogos.ts`
+
+5) Usage example
+```ts
+// Upload a processed logo (Blob)
+import { useAuth } from '@/hooks/useAuth';
+import { useLogos } from '@/hooks/useLogos';
+
+const { user } = useAuth();
+const { logosQuery, uploadMutation } = useLogos(user?.id);
+
+// To upload
+// uploadMutation.mutate({ blob, fileName: 'logo.png', contentType: 'image/png' });
+
+// To list
+// const logos = logosQuery.data;
+```
 
 ## How can I deploy this project?
 
