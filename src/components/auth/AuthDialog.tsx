@@ -36,24 +36,12 @@ export function AuthDialog({ open, onOpenChange }: AuthDialogProps) {
     try {
       if (isLogin) {
         await authService.signInWithEmail(email, password)
-        toast({
-          title: "Login realizado com sucesso!",
-          description: "Bem-vindo de volta.",
-        })
       } else {
         await authService.signUpWithEmail(email, password)
-        toast({
-          title: "Cadastro realizado!",
-          description: "Verifique seu email para confirmar a conta.",
-        })
       }
       onOpenChange(false)
     } catch (error: any) {
-      toast({
-        title: "Erro",
-        description: error.message,
-        variant: "destructive",
-      })
+      // Os erros já são tratados nos services com toasts
     } finally {
       setLoading(false)
     }
@@ -93,17 +81,9 @@ export function AuthDialog({ open, onOpenChange }: AuthDialogProps) {
     setLoading(true)
     try {
       await authService.resetPassword(email)
-      toast({
-        title: "Email enviado!",
-        description: "Verifique sua caixa de entrada para redefinir a senha.",
-      })
       setShowForgotPassword(false)
     } catch (error: any) {
-      toast({
-        title: "Erro",
-        description: error.message,
-        variant: "destructive",
-      })
+      // Os erros já são tratados no service com toasts
     } finally {
       setLoading(false)
     }
@@ -166,7 +146,8 @@ export function AuthDialog({ open, onOpenChange }: AuthDialogProps) {
                 disabled={loading}
                 className="w-full border-secondary/20 hover:bg-secondary/10 hover:text-secondary hover:border-secondary/40"
               >
-                <Mail className="mr-2 h-4 w-4" />
+                {loading && <Spinner size="sm" className="mr-2" />}
+                {!loading && <Mail className="mr-2 h-4 w-4" />}
                 Continuar com Google
               </Button>
 

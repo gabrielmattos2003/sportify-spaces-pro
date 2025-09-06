@@ -60,6 +60,25 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 - Supabase (Auth, Database, Storage)
+- Hugging Face Transformers.js (Background removal)
+- TanStack Query (State management)
+
+## 🛡️ Security & Stability Features
+
+### Error Handling
+- **User-friendly messages**: All errors display informative toast notifications
+- **Network resilience**: Connection failures show "try again later" messages
+- **Structured logging**: Console logs with prefixes like `[Auth]`, `[Upload]`, `[Logo]`
+
+### Image Upload Security
+- **File size limit**: Maximum 5MB per upload
+- **Validation**: Automatic size checking before upload
+- **Progress feedback**: Loading spinners and toast notifications
+
+### Authentication Security  
+- **Specific error messages**: "Invalid credentials" vs "Connection error"
+- **Password validation**: Minimum 6 characters with clear feedback
+- **Session management**: Secure token handling via Supabase
 
 ## Backend (Supabase) Setup
 
@@ -84,8 +103,9 @@ create policy "Users can manage their own logos" on public.logos
 ```
 
 3) Configure Supabase client keys
-- Open `src/lib/supabaseClient.ts` and replace `YOUR_SUPABASE_URL` and `YOUR_SUPABASE_ANON_KEY` with your project values.
-- Note: Lovable does not use .env for frontend. Public anon key is safe in the browser.
+- **Using Lovable Integration (Recommended)**: Click the green Supabase button in the top-right corner to connect automatically
+- **Manual Setup**: The project already uses `import.meta.env.VITE_SUPABASE_URL` and `import.meta.env.VITE_SUPABASE_ANON_KEY`
+- **Note**: Lovable does not use .env files. Variables are managed through the Supabase integration.
 
 4) Available services/hooks
 - Auth: `src/services/authService.ts`, `src/hooks/useAuth.ts`

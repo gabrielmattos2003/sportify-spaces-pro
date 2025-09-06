@@ -1,4 +1,5 @@
 import { supabase } from '@/lib/supabaseClient';
+import { toast } from '@/hooks/use-toast';
 
 // Table schema suggestion (execute in Supabase SQL):
 // create table if not exists public.logos (
@@ -21,25 +22,68 @@ export interface LogoRecord {
 
 export const logoService = {
   saveLogo: async (userId: string, path: string) => {
-    const { data, error } = await supabase
-      .from('logos')
-      .insert({ user_id: userId, path })
-      .select('*')
-      .single();
-    if (error) throw error;
-    return data as LogoRecord;
+    try {
+      console.log('[Logo] Salvando logo...');
+      const { data, error } = await supabase
+        .from('logos')
+        .insert({ user_id: userId, path })
+        .select('*')
+        .single();
+      if (error) {
+        console.error('[Logo] Erro ao salvar:', error);
+        toast({ title: 'Erro', description: 'Erro ao salvar logo no banco de dados.', variant: 'destructive' });
+        throw error;
+      }
+      console.log('[Logo] Logo salvo com sucesso');
+      return data as LogoRecord;
+    } catch (error) {
+      console.error('[Logo] Erro geral:', error);
+      if (!error.message?.includes('salvar')) {
+        toast({ title: 'Erro de conexão', description: 'Verifique sua conexão e tente novamente.', variant: 'destructive' });
+      }
+      throw error;
+    }
   },
   listUserLogos: async (userId: string) => {
-    const { data, error } = await supabase
-      .from('logos')
-      .select('*')
-      .eq('user_id', userId)
-      .order('created_at', { ascending: false });
-    if (error) throw error;
-    return (data || []) as LogoRecord[];
+    try {
+      console.log('[Logo] Carregando logos...');
+      const { data, error } = await supabase
+        .from('logos')
+        .select('*')
+        .eq('user_id', userId)
+        .order('created_at', { ascending: false });
+      if (error) {
+        console.error('[Logo] Erro ao carregar:', error);
+        toast({ title: 'Erro', description: 'Erro ao carregar logos.', variant: 'destructive' });
+        throw error;
+      }
+      console.log('[Logo] Logos carregados');
+      return (data || []) as LogoRecord[];
+    } catch (error) {
+      console.error('[Logo] Erro geral:', error);
+      if (!error.message?.includes('carregar')) {
+        toast({ title: 'Erro de conexão', description: 'Verifique sua conexão e tente novamente.', variant: 'destructive' });
+      }
+      throw error;
+    }
   },
   deleteLogo: async (id: string) => {
-    const { error } = await supabase.from('logos').delete().eq('id', id);
-    if (error) throw error;
+    try {
+      console.log('[Logo] Deletando logo...');
+      const { error } = await supabase.from('logos').delete().eq('id', id);
+      if (error) {
+        console.error('[Logo] Erro ao deletar:', error);
+        toast({ title: 'Erro', description: 'Erro ao deletar logo.', variant: 'destructive' });
+        throw error;
+      }
+      console.log('[Logo] Logo deletado');
+      toast({ title: 'Sucesso', description: 'Logo deletado com sucesso!' });
+    } catch (error) {
+      console.error('[Logo] Erro geral:', error);
+      if (!error.message?.includes('deletar')) {
+        toast({ title: 'Erro de conexão', description: 'Verifique sua conexão e tente novamente.', variant: 'destructive' });
+      }
+      throw error;
+    }
   },
 };

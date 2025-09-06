@@ -1,6 +1,7 @@
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
 import { logoService } from '@/services/logoService';
 import { storageService } from '@/services/storageService';
+import { toast } from '@/hooks/use-toast';
 
 export const useLogos = (userId: string | undefined) => {
   const queryClient = useQueryClient();
@@ -24,6 +25,9 @@ export const useLogos = (userId: string | undefined) => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['logos', userId] });
+    },
+    onError: () => {
+      // Erros já são tratados nos services
     },
   });
 
