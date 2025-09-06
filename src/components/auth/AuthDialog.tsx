@@ -160,24 +160,15 @@ export function AuthDialog({ open, onOpenChange }: AuthDialogProps) {
             </>
           ) : (
             <>
-              <div className="grid grid-cols-2 gap-2">
-                <Button
-                  variant="outline"
-                  onClick={() => handleSocialAuth('google')}
-                  disabled={loading}
-                >
-                  <Mail className="mr-2 h-4 w-4" />
-                  Google
-                </Button>
-                <Button
-                  variant="outline"
-                  onClick={() => handleSocialAuth('github')}
-                  disabled={loading}
-                >
-                  <Github className="mr-2 h-4 w-4" />
-                  GitHub
-                </Button>
-              </div>
+              <Button
+                variant="outline"
+                onClick={() => handleSocialAuth('google')}
+                disabled={loading}
+                className="w-full"
+              >
+                <Mail className="mr-2 h-4 w-4" />
+                Continuar com Google
+              </Button>
 
               <div className="relative">
                 <div className="absolute inset-0 flex items-center">
