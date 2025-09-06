@@ -25,13 +25,13 @@ export function MobileMenu() {
             <span className="sr-only">Abrir menu</span>
           </Button>
         </SheetTrigger>
-        <SheetContent side="right" className="w-[250px] sm:w-[300px] bg-foreground text-background">
+        <SheetContent side="right" className="w-[250px] sm:w-[300px] bg-black text-white">
           <nav className="flex flex-col gap-4">
             {navigation.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="block px-3 py-2 text-base font-medium text-background hover:text-secondary transition-colors"
+                className="block px-3 py-2 text-base font-medium text-white hover:text-secondary transition-colors"
                 onClick={() => setOpen(false)}
               >
                 {item.name}
