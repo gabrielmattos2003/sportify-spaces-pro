@@ -2,9 +2,13 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Phone, MapPin, Clock, Star } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
+import { LogoProcessor } from "@/components/LogoProcessor";
+import { useState } from "react";
 
 
 const Index = () => {
+  const [processedLogoUrl, setProcessedLogoUrl] = useState<string>("");
+  
   const arenaCourts = [
     { name: "Quadra 1", price: "R$ 80/hora", available: true },
     { name: "Quadra 2", price: "R$ 60/hora", available: true },
@@ -32,17 +36,31 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Logo Processor */}
+      <LogoProcessor 
+        originalImageUrl="/lovable-uploads/bb76944f-d711-451f-86db-52de16cbd8c5.png"
+        onProcessed={setProcessedLogoUrl}
+      />
+      
       {/* Header */}
       <header className="bg-primary text-primary-foreground py-6 px-6">
         <div className="container mx-auto">
           {/* Logo - Centered at top */}
           <div className="flex justify-center mb-4">
-            <img src="/lovable-uploads/bb76944f-d711-451f-86db-52de16cbd8c5.png" alt="Nove 10 Logo" className="w-24 h-24" />
+            <img 
+              src={processedLogoUrl || "/lovable-uploads/bb76944f-d711-451f-86db-52de16cbd8c5.png"} 
+              alt="Nove 10 Logo" 
+              className="w-24 h-24" 
+            />
           </div>
           
-          {/* Title - Below Logo */}
+          {/* Title - Below Logo with custom colors */}
           <div className="text-center mb-6">
-            <h1 className="text-3xl font-bold">Nove 10 Complexo Esportivo</h1>
+            <h1 className="text-3xl font-bold">
+              <span className="text-gray-400">NOVE</span>
+              <span className="text-orange-500">10</span>
+            </h1>
+            <p className="text-orange-500 text-lg font-semibold tracking-wide">COMPLEXO ESPORTIVO</p>
           </div>
           
           {/* Navigation - Below Title */}
