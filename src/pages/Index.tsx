@@ -2,12 +2,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Phone, MapPin, Clock, Star } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
-import { LogoEditor } from "@/components/LogoEditor";
 import { useState } from "react";
 
 
 const Index = () => {
-  const [processedLogoUrl, setProcessedLogoUrl] = useState<string>("");
   
   const arenaCourts = [
     { name: "Quadra 1", price: "R$ 80/hora", available: true },
@@ -36,21 +34,15 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Logo Editor */}
-      <LogoEditor 
-        originalImageUrl="/lovable-uploads/bb76944f-d711-451f-86db-52de16cbd8c5.png"
-        onProcessed={setProcessedLogoUrl}
-      />
-      
       {/* Header */}
       <header className="bg-black text-white py-6 px-6">
         <div className="container mx-auto">
           {/* Logo - Centered at top */}
           <div className="flex justify-center mb-4">
             <img 
-              src={processedLogoUrl || "/lovable-uploads/bb76944f-d711-451f-86db-52de16cbd8c5.png"} 
+              src="/lovable-uploads/e62a9946-4f45-474b-ac34-45b4de10bde5.png" 
               alt="Nove 10 Logo" 
-              className="w-32 h-32 object-contain" 
+              className="w-24 h-24 object-contain" 
             />
           </div>
           
