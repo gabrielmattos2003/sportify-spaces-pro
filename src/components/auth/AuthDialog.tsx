@@ -197,7 +197,7 @@ export function AuthDialog({ open, onOpenChange }: AuthDialogProps) {
 
               <Button
                 onClick={handleEmailAuth}
-                className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground"
+                className="w-full bg-black hover:bg-black/90 text-white active:bg-black/80 focus:bg-black border-orange-500/20"
                 disabled={loading}
               >
                 {loading && <Spinner size="sm" className="mr-2" />}
