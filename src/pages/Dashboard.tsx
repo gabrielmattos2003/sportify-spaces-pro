@@ -1,8 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { useAuth } from "@/hooks/useAuth"
-import { authService } from "@/services/authService"
-import { useToast } from "@/hooks/use-toast"
 import { 
   Calendar, 
   MapPin, 
@@ -16,46 +13,6 @@ import {
 } from "lucide-react"
 
 export default function Dashboard() {
-  const { user, loading } = useAuth()
-  const { toast } = useToast()
-
-  const handleLogout = async () => {
-    try {
-      await authService.signOut()
-      toast({
-        title: "Logout realizado",
-        description: "Você foi desconectado com sucesso.",
-      })
-    } catch (error: any) {
-      toast({
-        title: "Erro",
-        description: error.message,
-        variant: "destructive",
-      })
-    }
-  }
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-foreground">Carregando...</div>
-      </div>
-    )
-  }
-
-  if (!user) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Acesso Negado</h1>
-          <p className="text-muted-foreground mb-4">Você precisa estar logado para acessar o dashboard.</p>
-          <Button onClick={() => window.location.href = "/"}>
-            Voltar ao Início
-          </Button>
-        </div>
-      </div>
-    )
-  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -67,12 +24,8 @@ export default function Dashboard() {
               <h1 className="text-xl font-bold">Dashboard</h1>
             </div>
             <div className="flex items-center space-x-4">
-              <span className="text-sm text-muted-foreground hidden sm:inline">
-                {user.email}
-              </span>
-              <Button variant="outline" size="sm" onClick={handleLogout}>
-                <LogOut className="h-4 w-4 mr-2" />
-                Sair
+              <Button variant="outline" size="sm" onClick={() => window.location.href = "/"}>
+                Voltar ao Início
               </Button>
             </div>
           </div>
@@ -83,10 +36,10 @@ export default function Dashboard() {
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
           <h2 className="text-2xl font-bold text-foreground mb-2">
-            Bem-vindo de volta!
+            Bem-vindo ao Dashboard!
           </h2>
           <p className="text-muted-foreground">
-            Gerencie suas reservas e acompanhe suas atividades.
+            Gerencie suas reservas e acompanhe suas atividades no complexo esportivo.
           </p>
         </div>
 

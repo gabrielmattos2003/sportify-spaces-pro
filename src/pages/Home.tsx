@@ -7,14 +7,9 @@ import { usePhoneFormatter } from "@/hooks/usePhoneFormatter";
 import { arenaCourts, teachers } from "@/utils/sportsData";
 import { MobileMenu } from "@/components/layout/MobileMenu";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
-import { AuthDialog } from "@/components/auth/AuthDialog";
-import { useAuth } from "@/hooks/useAuth";
-import { Spinner } from "@/components/ui/spinner";
 
 const Home = () => {
   const { formatPhoneForWhatsApp } = usePhoneFormatter();
-  const { user, loading } = useAuth();
-  const [authDialogOpen, setAuthDialogOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-background">
@@ -47,31 +42,14 @@ const Home = () => {
             <div className="flex items-center space-x-2">
               <ThemeToggle />
               
-              {loading ? (
-                <Spinner size="sm" />
-              ) : user ? (
-                <div className="flex items-center space-x-2">
-                  <span className="text-sm text-muted-foreground hidden sm:inline">
-                    {user.email}
-                  </span>
-                  <Button 
-                    size="sm" 
-                    onClick={() => window.location.href = "/dashboard"}
-                  >
-                    <User className="h-4 w-4 mr-1" />
-                    Dashboard
-                  </Button>
-                </div>
-              ) : (
-                <Button 
-                  size="sm" 
-                  onClick={() => setAuthDialogOpen(true)}
-                  className="bg-secondary hover:bg-secondary/90 text-secondary-foreground"
-                >
-                  <LogIn className="h-4 w-4 mr-1" />
-                  Entrar
-                </Button>
-              )}
+              <Button 
+                size="sm" 
+                onClick={() => window.location.href = "/dashboard"}
+                className="bg-secondary hover:bg-secondary/90 text-secondary-foreground"
+              >
+                <User className="h-4 w-4 mr-1" />
+                Dashboard
+              </Button>
               
               <MobileMenu />
             </div>
@@ -89,11 +67,6 @@ const Home = () => {
         <FaWhatsapp size={24} className="sm:w-7 sm:h-7" />
       </a>
 
-      {/* Auth Dialog */}
-      <AuthDialog 
-        open={authDialogOpen} 
-        onOpenChange={setAuthDialogOpen} 
-      />
 
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground py-12 sm:py-16 lg:py-20 px-4 sm:px-6">
