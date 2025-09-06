@@ -1,68 +1,120 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Phone, MapPin, Clock, Star } from "lucide-react";
+import { Phone, MapPin, Clock, Star, User, LogIn } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { usePhoneFormatter } from "@/hooks/usePhoneFormatter";
 import { arenaCourts, teachers } from "@/utils/sportsData";
+import { MobileMenu } from "@/components/layout/MobileMenu";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { AuthDialog } from "@/components/auth/AuthDialog";
+import { useAuth } from "@/hooks/useAuth";
+import { Spinner } from "@/components/ui/spinner";
 
 const Home = () => {
   const { formatPhoneForWhatsApp } = usePhoneFormatter();
+  const { user, loading } = useAuth();
+  const [authDialogOpen, setAuthDialogOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="text-white py-6 px-6">
-        <div className="container mx-auto">
-          {/* Title */}
-          <div className="text-center mb-6">
-            <h1 className="text-3xl font-bold">
-              <span className="text-gray-400">NOVE</span>
-              <span className="text-orange-500">10</span>
-            </h1>
-            <p className="text-orange-500 text-lg font-semibold tracking-wide">COMPLEXO ESPORTIVO</p>
-          </div>
-          
-          {/* Navigation */}
-          <nav className="flex justify-center">
-            <div className="flex flex-wrap justify-center gap-6 text-sm">
-              <a href="#quadras" className="hover:text-primary-foreground/80 transition-colors">Reserva de Quadra ou Campo</a>
-              <a href="#aulas" className="hover:text-primary-foreground/80 transition-colors">Marcar Aula</a>
-              <a href="#salao" className="hover:text-primary-foreground/80 transition-colors">Reserva para Eventos</a>
-              <a href="#eventos" className="hover:text-primary-foreground/80 transition-colors">Escola do Flamengo</a>
-              <a href="#rotativo" className="hover:text-primary-foreground/80 transition-colors">Rotativo Volei</a>
-              <a href="#galeria" className="hover:text-primary-foreground/80 transition-colors">Galeria</a>
-              <a href="#contato" className="hover:text-primary-foreground/80 transition-colors">Contato</a>
+      <header className="border-b border-border bg-card text-card-foreground">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo */}
+            <div className="flex items-center">
+              <h1 className="text-xl sm:text-2xl font-bold">
+                <span className="text-muted-foreground">NOVE</span>
+                <span className="text-secondary">10</span>
+              </h1>
+              <span className="ml-2 text-xs sm:text-sm text-secondary font-semibold tracking-wide hidden sm:inline">
+                COMPLEXO ESPORTIVO
+              </span>
             </div>
-          </nav>
-          
-          {/* WhatsApp Float Button */}
-          <a
-            href="https://wa.me/554832090284"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="fixed bottom-4 right-4 bg-green-500 p-4 rounded-full shadow-lg text-white hover:bg-green-600 transition z-50"
-          >
-            <FaWhatsapp size={28} />
-          </a>
+
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center space-x-6">
+              <a href="#quadras" className="text-sm hover:text-primary transition-colors">Quadras</a>
+              <a href="#aulas" className="text-sm hover:text-primary transition-colors">Aulas</a>
+              <a href="#salao" className="text-sm hover:text-primary transition-colors">Eventos</a>
+              <a href="#eventos" className="text-sm hover:text-primary transition-colors">Flamengo</a>
+              <a href="#rotativo" className="text-sm hover:text-primary transition-colors">Rotativo</a>
+              <a href="#galeria" className="text-sm hover:text-primary transition-colors">Galeria</a>
+            </nav>
+
+            {/* Right side actions */}
+            <div className="flex items-center space-x-2">
+              <ThemeToggle />
+              
+              {loading ? (
+                <Spinner size="sm" />
+              ) : user ? (
+                <div className="flex items-center space-x-2">
+                  <span className="text-sm text-muted-foreground hidden sm:inline">
+                    {user.email}
+                  </span>
+                  <Button 
+                    size="sm" 
+                    onClick={() => window.location.href = "/dashboard"}
+                  >
+                    <User className="h-4 w-4 mr-1" />
+                    Dashboard
+                  </Button>
+                </div>
+              ) : (
+                <Button 
+                  size="sm" 
+                  onClick={() => setAuthDialogOpen(true)}
+                >
+                  <LogIn className="h-4 w-4 mr-1" />
+                  Entrar
+                </Button>
+              )}
+              
+              <MobileMenu />
+            </div>
+          </div>
         </div>
       </header>
 
+      {/* WhatsApp Float Button */}
+      <a
+        href="https://wa.me/554832090284"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-4 right-4 bg-green-500 p-3 sm:p-4 rounded-full shadow-lg text-white hover:bg-green-600 transition z-50"
+      >
+        <FaWhatsapp size={24} className="sm:w-7 sm:h-7" />
+      </a>
+
+      {/* Auth Dialog */}
+      <AuthDialog 
+        open={authDialogOpen} 
+        onOpenChange={setAuthDialogOpen} 
+      />
+
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground py-20 px-6">
+      <section className="bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground py-12 sm:py-16 lg:py-20 px-4 sm:px-6">
         <div className="container mx-auto text-center">
-          <h2 className="text-5xl font-bold mb-6">Seu Esporte, Nossa Paixão</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
+            Seu Esporte, Nossa Paixão
+          </h2>
+          <p className="text-base sm:text-lg lg:text-xl mb-6 sm:mb-8 max-w-2xl mx-auto opacity-90">
             O melhor complexo esportivo da região com quadras modernas, professores qualificados e estrutura completa para sua diversão e treino.
           </p>
+          <Button size="lg" variant="outline" className="bg-white/10 text-white border-white/20 hover:bg-white/20">
+            Explorar Instalações
+          </Button>
         </div>
       </section>
 
       {/* Reserva de Quadras */}
-      <section id="quadras" className="py-16 px-6">
+      <section id="quadras" className="py-12 sm:py-16 px-4 sm:px-6">
         <div className="container mx-auto">
-          <h3 className="text-3xl font-bold text-center mb-12">Reserva de Quadras</h3>
+          <h3 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">Reserva de Quadras</h3>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6">
             {arenaCourts.map((court, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow">
                 <CardHeader>
@@ -89,10 +141,10 @@ const Home = () => {
       </section>
 
       {/* Aulas */}
-      <section id="aulas" className="py-16 px-6 bg-muted">
+      <section id="aulas" className="py-12 sm:py-16 px-4 sm:px-6 bg-muted">
         <div className="container mx-auto">
-          <h3 className="text-3xl font-bold text-center mb-12">Aulas</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <h3 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">Aulas</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
             {teachers.map((teacher, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow">
                 <CardHeader>
@@ -122,9 +174,9 @@ const Home = () => {
       </section>
 
       {/* Aluguel do Salão */}
-      <section id="salao" className="py-16 px-6">
+      <section id="salao" className="py-12 sm:py-16 px-4 sm:px-6">
         <div className="container mx-auto text-center">
-          <h3 className="text-3xl font-bold mb-8">Aluguel do Salão</h3>
+          <h3 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">Aluguel do Salão</h3>
           <p className="text-lg mb-8 max-w-2xl mx-auto">
             Espaço amplo e climatizado, ideal para festas, eventos corporativos e comemorações.
           </p>
@@ -144,9 +196,9 @@ const Home = () => {
       </section>
 
       {/* Escola do Flamengo */}
-      <section id="eventos" className="py-16 px-6 bg-muted">
+      <section id="eventos" className="py-12 sm:py-16 px-4 sm:px-6 bg-muted">
         <div className="container mx-auto text-center">
-          <h3 className="text-3xl font-bold mb-8">Escola do Flamengo</h3>
+          <h3 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">Escola do Flamengo</h3>
           <p className="text-lg mb-8 max-w-2xl mx-auto">
             Bem-vindo à sua Escola de Futebol Flamengo em Florianópolis — aqui começa o seu sonho dentro das quatro linhas!
           </p>
@@ -168,20 +220,20 @@ const Home = () => {
       </section>
 
       {/* Rotativo */}
-      <section id="rotativo" className="py-16 px-6">
+      <section id="rotativo" className="py-12 sm:py-16 px-4 sm:px-6">
         <div className="container mx-auto">
-          <h3 className="text-3xl font-bold text-center mb-8">Rotativo</h3>
+          <h3 className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">Rotativo</h3>
           <div className="max-w-3xl mx-auto">
             <div className="mb-8">
-              <h4 className="text-xl font-semibold mb-4 text-center">Como funciona?</h4>
-              <p className="text-lg text-center mb-8">
+              <h4 className="text-lg sm:text-xl font-semibold mb-4 text-center">Como funciona?</h4>
+              <p className="text-base sm:text-lg text-center mb-6 sm:mb-8">
                 É rotativo de vôlei de duplas! As pessoas se dividem nas quadras e jogam partidas curtas. Ao longo do tempo, as duplas vão se revezando para garantir que todos joguem.
               </p>
             </div>
             
             <div className="mb-8">
-              <h4 className="text-xl font-semibold mb-4 text-center">Horários do Rotativo:</h4>
-              <div className="grid md:grid-cols-2 gap-6">
+              <h4 className="text-lg sm:text-xl font-semibold mb-4 text-center">Horários do Rotativo:</h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <Card>
                   <CardHeader>
                     <CardTitle className="text-lg">Quarta-feira: 21h às 00h</CardTitle>
@@ -218,12 +270,12 @@ const Home = () => {
       </section>
 
       {/* Galeria */}
-      <section id="galeria" className="py-16 px-6">
+      <section id="galeria" className="py-12 sm:py-16 px-4 sm:px-6">
         <div className="container mx-auto">
-          <h3 className="text-3xl font-bold text-center mb-12">Nossas Instalações</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <h3 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">Nossas Instalações</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {Array.from({ length: 6 }).map((_, index) => (
-              <div key={index} className="relative h-64 bg-muted rounded-lg overflow-hidden hover:scale-105 transition-transform">
+              <div key={index} className="relative h-48 sm:h-64 bg-muted rounded-lg overflow-hidden hover:scale-105 transition-transform">
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/50 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 text-white">
                   <p className="font-semibold">Instalação {index + 1}</p>
@@ -235,9 +287,9 @@ const Home = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-secondary text-secondary-foreground py-12 px-6">
+      <footer className="bg-secondary text-secondary-foreground py-8 sm:py-12 px-4 sm:px-6">
         <div className="container mx-auto">
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             <div>
               <h4 className="text-xl font-bold mb-4">Nove 10 Complexo Esportivo</h4>
               <p className="mb-4">O melhor local para praticar esportes com qualidade e segurança.</p>
