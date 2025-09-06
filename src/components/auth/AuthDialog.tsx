@@ -141,7 +141,7 @@ export function AuthDialog({ open, onOpenChange }: AuthDialogProps) {
 
               <Button
                 onClick={handleForgotPassword}
-                className="w-full"
+                className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground"
                 disabled={loading}
               >
                 {loading && <Spinner size="sm" className="mr-2" />}
@@ -152,7 +152,7 @@ export function AuthDialog({ open, onOpenChange }: AuthDialogProps) {
                 <button
                   type="button"
                   onClick={() => setShowForgotPassword(false)}
-                  className="text-primary hover:underline"
+                  className="text-secondary hover:underline"
                 >
                   Voltar ao login
                 </button>
@@ -164,7 +164,7 @@ export function AuthDialog({ open, onOpenChange }: AuthDialogProps) {
                 variant="outline"
                 onClick={() => handleSocialAuth('google')}
                 disabled={loading}
-                className="w-full"
+                className="w-full border-secondary/20 hover:bg-secondary/10 hover:text-secondary hover:border-secondary/40"
               >
                 <Mail className="mr-2 h-4 w-4" />
                 Continuar com Google
@@ -199,7 +199,7 @@ export function AuthDialog({ open, onOpenChange }: AuthDialogProps) {
                     <button
                       type="button"
                       onClick={() => setShowForgotPassword(true)}
-                      className="text-xs text-primary hover:underline"
+                      className="text-xs text-secondary hover:underline"
                     >
                       Esqueceu a senha?
                     </button>
@@ -216,7 +216,7 @@ export function AuthDialog({ open, onOpenChange }: AuthDialogProps) {
 
               <Button
                 onClick={handleEmailAuth}
-                className="w-full"
+                className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground"
                 disabled={loading}
               >
                 {loading && <Spinner size="sm" className="mr-2" />}
@@ -227,7 +227,7 @@ export function AuthDialog({ open, onOpenChange }: AuthDialogProps) {
                 <button
                   type="button"
                   onClick={() => setIsLogin(!isLogin)}
-                  className="text-primary hover:underline"
+                  className="text-secondary hover:underline"
                 >
                   {isLogin 
                     ? "Não tem uma conta? Cadastre-se" 
