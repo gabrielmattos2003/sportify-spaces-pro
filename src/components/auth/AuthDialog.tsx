@@ -141,7 +141,7 @@ export function AuthDialog({ open, onOpenChange }: AuthDialogProps) {
 
               <Button
                 onClick={handleForgotPassword}
-                className="w-full"
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground transition-colors"
                 disabled={loading}
               >
                 {loading && <Spinner size="sm" className="mr-2" />}
@@ -152,7 +152,7 @@ export function AuthDialog({ open, onOpenChange }: AuthDialogProps) {
                 <button
                   type="button"
                   onClick={() => setShowForgotPassword(false)}
-                  className="text-primary hover:underline"
+                  className="text-primary hover:text-primary/80 hover:underline transition-colors"
                 >
                   Voltar ao login
                 </button>
@@ -164,7 +164,7 @@ export function AuthDialog({ open, onOpenChange }: AuthDialogProps) {
                 variant="outline"
                 onClick={() => handleSocialAuth('google')}
                 disabled={loading}
-                className="w-full"
+                className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
               >
                 <Mail className="mr-2 h-4 w-4" />
                 Continuar com Google
@@ -199,7 +199,7 @@ export function AuthDialog({ open, onOpenChange }: AuthDialogProps) {
                     <button
                       type="button"
                       onClick={() => setShowForgotPassword(true)}
-                      className="text-xs text-primary hover:underline"
+                      className="text-xs text-primary hover:text-primary/80 hover:underline transition-colors"
                     >
                       Esqueceu a senha?
                     </button>
@@ -216,7 +216,7 @@ export function AuthDialog({ open, onOpenChange }: AuthDialogProps) {
 
               <Button
                 onClick={handleEmailAuth}
-                className="w-full"
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground transition-colors"
                 disabled={loading}
               >
                 {loading && <Spinner size="sm" className="mr-2" />}
@@ -227,7 +227,7 @@ export function AuthDialog({ open, onOpenChange }: AuthDialogProps) {
                 <button
                   type="button"
                   onClick={() => setIsLogin(!isLogin)}
-                  className="text-primary hover:underline"
+                  className="text-primary hover:text-primary/80 hover:underline transition-colors"
                 >
                   {isLogin 
                     ? "Não tem uma conta? Cadastre-se" 
