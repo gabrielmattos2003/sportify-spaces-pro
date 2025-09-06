@@ -43,7 +43,7 @@ const Index = () => {
       />
       
       {/* Header */}
-      <header className="bg-black text-white py-6 px-6">
+      <header className="text-white py-6 px-6">
         <div className="container mx-auto">
           {/* Logo - Centered at top */}
           <div className="flex justify-center mb-4">
