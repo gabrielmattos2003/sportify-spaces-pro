@@ -19,7 +19,8 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['Montserrat', 'system-ui', 'sans-serif'],
+				sans: ['Inter', 'system-ui', 'sans-serif'],
+				sports: ['Rajdhani', 'Inter', 'system-ui', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
