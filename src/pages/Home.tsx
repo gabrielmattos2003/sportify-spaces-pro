@@ -279,7 +279,7 @@ const Home = () => {
             </div>
           </div>
           <div className="border-t border-secondary-foreground/20 mt-8 pt-8 text-center">
-            <p className="text-sm">&copy; 2024 Nove 10 Complexo Esportivo. Todos os direitos reservados.</p>
+            <p className="text-sm">&copy; 2025 Nove 10 Complexo Esportivo. Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>
